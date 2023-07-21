@@ -15,7 +15,7 @@ describe('api', () => {
 
   describe('GET /', () => {
     let res;
-    beforeEach(async () => {
+    before(async () => {
       res = await app.get('/');
     });
     it('should return 200 OK', () => {

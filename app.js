@@ -10,7 +10,7 @@ app.get('/', (req, res, next) => {
 
 app.get('/api/movies', async (req, res, next) => {
   const movies = await Moves.findAll();
-  res.status(200).json(movies);
+  res.status(200).send(movies);
 });
 
 module.exports = app;

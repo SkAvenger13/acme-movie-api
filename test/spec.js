@@ -1,7 +1,21 @@
 const { expect } = require('chai');
+const app = require('supertest')(require('../app'));
 
 describe('baseline test', () => {
   it('should be a passing test', () => {
     expect(true).to.equal(true);
+  });
+});
+
+describe('GET /', () => {
+  beforeEach(async () => {
+    const res = await app.get('/');
+  });
+  it('should return 200 OK', () => {
+    console.log(res);
+    expect(res.status).to.equal(200);
+  });
+  it('should return json', () => {
+    expect(res.json).to.equal({ test: 'working' });
   });
 });

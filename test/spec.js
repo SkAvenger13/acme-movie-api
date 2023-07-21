@@ -61,7 +61,7 @@ describe('api', () => {
       expect(res.status).to.equal(200);
     });
     it('should return correct movie id', async () => {
-      expect(res._body.movieId).to.equal(1);
+      expect(res._body.id).to.equal(1);
     });
     it('should return correct movie title', async () => {
       expect(res._body.title).to.equal('Sully');

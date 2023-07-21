@@ -8,8 +8,9 @@ describe('baseline test', () => {
 });
 
 describe('GET /', () => {
+  let res;
   beforeEach(async () => {
-    const res = await app.get('/');
+    res = await app.get('/');
   });
   it('should return 200 OK', () => {
     console.log(res);

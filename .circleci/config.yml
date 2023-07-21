@@ -7,11 +7,22 @@ jobs:
     working_directory: ~/repo # In which directory to run the steps. Will be interpreted as an absolute path.
     docker: # to use a circle ci pre-built docker file
       - image: cimg/node:16.15.0 # name of the image to run --> note js version 16.15.0
+        environment:
+          DATABASE_URL: postgresql://postgres@localhost/acme-movie-api
+          POSTRGRES_USER: postgres
+          POSTGRES_DB: acme-movie-api
+      - image: cimg/postgres:14.0
+        environment:
+          POSTGRES_USER: postgres
     steps: # list of steps as single key/value pairs
       - checkout # used to checkout the code from the specified directory (working_directory)
       - run: # key --> indicates the step type
           name: Install Dependencies # name of the step (not required)
           command: npm install # defines the command to execute at this step
+      - run: sudo apt-get install postgresql-client
+      - run:
+          name: Add database for postgres
+          command: psql -U postgres -h localhost -p 5432 -c "create database acme-movie-api;"
       - run:
           name: Test
           command: npm run test

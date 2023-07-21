@@ -13,4 +13,9 @@ app.get('/api/movies', async (req, res, next) => {
   res.status(200).send(movies);
 });
 
+app.get('/api/actors', async (req, res, next) => {
+  const actors = await Actor.findAll();
+  res.status(200).send(actors);
+});
+
 module.exports = app;

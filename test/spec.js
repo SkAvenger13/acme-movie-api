@@ -51,4 +51,20 @@ describe('api', () => {
       expect(res._body.length).to.equal(5);
     });
   });
+
+  describe('GET /api/movies/:id', () => {
+    let res;
+    before(async () => {
+      res = await app.get('/api/movies/1');
+    });
+    it('should return 200 OK', () => {
+      expect(res.status).to.equal(200);
+    });
+    it('should return correct movie id', async () => {
+      expect(res._body.movieId).to.equal(1);
+    });
+    it('should return correct movie title', async () => {
+      expect(res._body.title).to.equal('Sully');
+    });
+  });
 });

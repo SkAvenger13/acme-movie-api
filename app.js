@@ -18,4 +18,11 @@ app.get('/api/actors', async (req, res, next) => {
   res.status(200).send(actors);
 });
 
+app.get('/api/movies/:id', async (req, res, next) => {
+  const movie = await Movie.findOne({
+    where: { movieId: req.params.id },
+  });
+  res.status(200).send(movie);
+});
+
 module.exports = app;

@@ -17,6 +17,6 @@ describe('GET /', () => {
     expect(res.status).to.equal(200);
   });
   it('should return json', () => {
-    expect(res.json).to.equal({ test: 'working' });
+    expect(res._body).to.equal({ test: 'working' });
   });
 });

@@ -9,7 +9,7 @@ app.get('/', (req, res, next) => {
 });
 
 app.get('/api/movies', async (req, res, next) => {
-  const movies = await Moves.findAll();
+  const movies = await Movie.findAll();
   res.status(200).send(movies);
 });
 

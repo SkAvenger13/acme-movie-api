@@ -48,7 +48,7 @@ describe('api', () => {
       expect(res.status).to.equal(200);
     });
     it('should return all movies', async () => {
-      expect(res._body.length).to.equal(4);
+      expect(res._body.length).to.equal(5);
     });
   });
 });
